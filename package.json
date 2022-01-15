@@ -10,7 +10,8 @@
     "lint:prettier": "prettier --ignore-path .prettierignore  --check '**/*.{js,ts,tsx,css}'",
     "format": "run-s format:eslint format:prettier",
     "format:eslint": "eslint --fix --ext ts,tsx,js .",
-    "format:prettier": "prettier --ignore-path .prettierignore  --write '**/*.{js,ts,tsx,css}'"
+    "format:prettier": "prettier --ignore-path .prettierignore  --write '**/*.{js,ts,tsx,css}'",
+    "test": "jest"
   },
   "dependencies": {
     "next": "12.0.8",
@@ -18,11 +19,14 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
     "eslint": "^8.6.0",
     "eslint-config-next": "12.0.8",
     "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.4.7",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "typescript": "4.5.4"
