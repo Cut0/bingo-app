@@ -1,8 +1,8 @@
-type BingoElement = { num: number; isOpened: boolean };
+export type BingoElementInfo = { num: number; isOpened: boolean };
 
-export type BingoLine = BingoElement[];
+export type BingoLine = BingoElementInfo[];
 
-export type BingoSheet = BingoElement[][];
+export type BingoSheet = BingoElementInfo[][];
 
 export type LineStatus = 'Initial' | 'Reach' | 'Bingo';
 
