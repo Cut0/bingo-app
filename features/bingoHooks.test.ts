@@ -8,7 +8,7 @@ describe(useBingo.name, () => {
   });
 
   test('BingoSheetが初期状態である。', () => {
-    expect(result.current[0].flat().map((el) => el.isOpened)).toEqual([
+    expect(result.current[0]?.flat().map((el) => el.isOpened)).toEqual([
       ...Array.from({ length: 12 }).map(() => false),
       true,
       ...Array.from({ length: 12 }).map(() => false),
@@ -47,7 +47,7 @@ describe(useBingo.name, () => {
         result.current[2](4, 4),
       ]);
     });
-    expect(result.current[0].flat().map((el) => el.isOpened)).toEqual([
+    expect(result.current[0]?.flat().map((el) => el.isOpened)).toEqual([
       true,
       true,
       true,
