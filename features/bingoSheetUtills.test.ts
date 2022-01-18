@@ -9,9 +9,9 @@ describe(getBingoNumberRow.name, () => {
 
   test('列の値が範囲内である。', () => {
     expect(
-      getBingoNumberRow(params).every((el) => {
-        return params.min <= el && el <= params.max;
-      }),
+      getBingoNumberRow(params).every(
+        (el) => params.min <= el && el <= params.max,
+      ),
     ).toBe(true);
   });
 
