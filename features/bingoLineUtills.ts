@@ -1,9 +1,7 @@
-import { BingoLineState } from './bingoHooks';
+import { BingoLine, BingoSheet, LineStatus } from './bingo';
 
-export const detectLine = (line: boolean[]) => {
-  const count = line.filter((el) => {
-    return el;
-  }).length;
+export const detectLine = (line: BingoLine) => {
+  const count = line.map((el) => el.isOpened).filter((el) => el).length;
   switch (count) {
     case line.length:
       return 'Bingo';
@@ -14,29 +12,37 @@ export const detectLine = (line: boolean[]) => {
   }
 };
 
-export const getLineState = (bingoMap: boolean[][]): BingoLineState => {
-  const row = bingoMap.map(detectLine);
-
-  const column = bingoMap[0]
-    ?.map((_col, i) => bingoMap.map((row) => row[i]))
-    .map(detectLine);
-
-  const upper = detectLine(
-    bingoMap.map((row, i) => {
-      return row[row.length - i - 1];
-    }),
-  );
-
-  const lower = detectLine(
-    bingoMap.map((row, i) => {
-      return row[i];
-    }),
-  );
-
-  return {
-    row,
-    column,
-    upper,
-    lower,
+export const getLineStatus = (
+  { i, j }: { i: number; j: number },
+  bingoSheet: BingoSheet,
+) => {
+  const status: {
+    row: LineStatus;
+    column: LineStatus;
+    upper?: LineStatus;
+    lower?: LineStatus;
+  } = {
+    row: 'Initial',
+    column: 'Initial',
+    upper: undefined,
+    lower: undefined,
   };
+
+  status.row = detectLine(bingoSheet[i]);
+
+  status.column = detectLine(
+    bingoSheet[0]?.map((_, i) => bingoSheet.map((row) => row[i]))[j],
+  );
+
+  if (i === j) {
+    status.upper = detectLine(
+      bingoSheet.map((row, i) => row[row.length - i - 1]),
+    );
+  }
+
+  if (i === bingoSheet.length - j - 1) {
+    status.lower = detectLine(bingoSheet.map((row, i) => row[i]));
+  }
+
+  return status;
 };
