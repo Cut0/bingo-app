@@ -49,7 +49,7 @@ export const BingoElement: FC<BingoElementProps> = ({
   );
 
   return (
-    <AspectRatio position="relative" ratio={1}>
+    <AspectRatio cursor="pointer" position="relative" ratio={1}>
       <>
         <GridItem
           bg="whiteBackground"
