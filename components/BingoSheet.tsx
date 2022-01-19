@@ -1,9 +1,8 @@
 import { memo, FC, useMemo } from 'react';
 import { Grid, Text } from '@chakra-ui/react';
 import { useBingo } from '../features/bingoHooks';
+import { BINGO_SIZE } from '../features/config';
 import { BingoElement } from './BingoElement';
-
-const bingoSize = 5;
 
 type BingoRowProps = {
   rowNameList: string[];
@@ -31,7 +30,7 @@ const BingoRowComponent: FC<BingoRowProps> = ({ rowNameList }) => {
 const BingoRow = memo(BingoRowComponent);
 
 export const BingoSheet: FC<{}> = () => {
-  const [bingoSheet, bingoLineState, openBingo] = useBingo(bingoSize);
+  const [bingoSheet, bingoLineState, openBingo] = useBingo(BINGO_SIZE);
   const rowNameList = useMemo(() => ['B', 'I', 'N', 'G', 'O'], []);
   return (
     <>

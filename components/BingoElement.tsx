@@ -5,8 +5,7 @@ import {
   BingoLineState,
   BingoElementPosition,
 } from '../features/bingo';
-
-const bingoSize = 5;
+import { BINGO_SIZE } from '../features/config';
 
 export type BingoElementProps = {
   position: BingoElementPosition;
@@ -22,7 +21,7 @@ const getStatus = (
   if (
     bingoLineState.column[columnNum] === 'Bingo' ||
     bingoLineState.row[rowNum] === 'Bingo' ||
-    (rowNum === bingoSize - columnNum - 1 &&
+    (rowNum === BINGO_SIZE - columnNum - 1 &&
       bingoLineState.upper === 'Bingo') ||
     (rowNum === columnNum && bingoLineState.lower === 'Bingo')
   )
@@ -30,7 +29,7 @@ const getStatus = (
   if (
     bingoLineState.column[columnNum] === 'Reach' ||
     bingoLineState.row[rowNum] === 'Reach' ||
-    (rowNum === bingoSize - columnNum - 1 &&
+    (rowNum === BINGO_SIZE - columnNum - 1 &&
       bingoLineState.upper === 'Reach') ||
     (rowNum === columnNum && bingoLineState.lower === 'Reach')
   )
@@ -67,8 +66,8 @@ export const BingoElement: FC<BingoElementProps> = ({
           }}
         >
           {!(
-            Math.floor(bingoSize / 2) === position.rowNum &&
-            Math.floor(bingoSize / 2) === position.columnNum
+            Math.floor(BINGO_SIZE / 2) === position.rowNum &&
+            Math.floor(BINGO_SIZE / 2) === position.columnNum
           ) && (
             <Flex alignItems="center" direction="column" justify="center">
               {status === 'Reach' && !elementInfo.isOpened && (
