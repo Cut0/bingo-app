@@ -3,8 +3,8 @@ export const theme = extendTheme({
   colors: {
     primary: '#CE4F18',
     secondary: '#7E232A',
-    whiteBackground: '#FFFFFF',
-    lightBackground: '#D5CFAF',
+    whiteBackground: '#F5EFCF',
+    lightBackground: '#B5AF8F',
     focusLightBackground: '#D0CAAA',
     background: '#C5B47E',
     success: '#7DBE5B',
