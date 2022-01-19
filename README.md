@@ -3,7 +3,7 @@
 
 ## 使用技術
 - TypeScript : 可能な限り型安全に開発を行えるようにするために採用した。
-- React Hooks (Next.js) : Hooks を利用して開発します。 Next.js の SSG により、パフォーマンスの指標となる lightScore の点数を向上させている。
+- React Hooks (Next.js) : Hooks を利用して開発します。 Next.js の SSG により、パフォーマンスの指標となる lightHouse の点数を向上させている。
 - Chakra UI : 柔軟な記法ができる上に汎用性の高いコンポーネントを提供しているため採用した。
 - Jest : 各モジュールや Hooks などのビジネスロジックに関するテストを行うため採用した。
 - GitHub Actions : PR作成時に `yarn test` , `yarn lint` , `yarn build`　が通るか確認するために採用した。
