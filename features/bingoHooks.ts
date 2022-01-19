@@ -15,10 +15,6 @@ export const useBingo = (length: number) => {
     lower: 'Initial',
   });
 
-  /**
-   * i: 列番号
-   * j: 行番号
-   */
   const openBingo = useCallback(
     (position: BingoElementPosition) => {
       if (!bingoSheet) return;
