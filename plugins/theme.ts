@@ -6,7 +6,7 @@ export const theme = extendTheme({
     whiteBackground: '#F5EFCF',
     lightBackground: '#B5AF8F',
     focusLightBackground: '#D0CAAA',
-    background: '#C5B47E',
+    background: '#F5E4AE',
     success: '#7DBE5B',
     danger: '#FF4C5B',
     warning: '#F4D667',
