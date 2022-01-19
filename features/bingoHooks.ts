@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getLineStatus } from './bingoLineUtills';
-import { BingoLineState, BingoSheet } from './bingo';
+import { BingoLineState, BingoElementPosition, BingoSheet } from './bingo';
 import { getInitialBingo } from './bingoSheetUtills';
 
 export const useBingo = (length: number) => {
@@ -20,24 +20,21 @@ export const useBingo = (length: number) => {
    * j: 行番号
    */
   const openBingo = useCallback(
-    (i: number, j: number) => {
+    (position: BingoElementPosition) => {
       if (!bingoSheet) return;
 
       const newBingoSheet = [...bingoSheet];
-      newBingoSheet[i][j].isOpened = true;
+      newBingoSheet[position.rowNum][position.columnNum].isOpened = true;
       setBingoSheet(newBingoSheet);
 
       setBingoLineState((preState) => {
         const { row, column, upper, lower } = getLineStatus(
-          {
-            i,
-            j,
-          },
+          position,
           newBingoSheet,
         );
         const newState = { ...preState };
-        newState.row[i] = row;
-        newState.column[j] = column;
+        newState.row[position.rowNum] = row;
+        newState.column[position.columnNum] = column;
         if (lower) {
           newState.lower = lower;
         }

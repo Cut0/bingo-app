@@ -1,4 +1,9 @@
-import { BingoLine, BingoSheet, LineStatus } from './bingo';
+import {
+  BingoElementPosition,
+  BingoLine,
+  BingoSheet,
+  LineStatus,
+} from './bingo';
 
 export const detectLine = (line: BingoLine) => {
   const count = line.map((el) => el.isOpened).filter((el) => el).length;
@@ -13,7 +18,7 @@ export const detectLine = (line: BingoLine) => {
 };
 
 export const getLineStatus = (
-  { i, j }: { i: number; j: number },
+  { rowNum, columnNum }: BingoElementPosition,
   bingoSheet: BingoSheet,
 ) => {
   const status: {
@@ -28,17 +33,17 @@ export const getLineStatus = (
     lower: undefined,
   };
 
-  status.row = detectLine(bingoSheet[i]);
+  status.row = detectLine(bingoSheet[rowNum]);
 
   status.column = detectLine(
-    bingoSheet[0]?.map((_, i) => bingoSheet.map((row) => row[i]))[j],
+    bingoSheet[0]?.map((_, i) => bingoSheet.map((row) => row[i]))[columnNum],
   );
 
-  if (i === j) {
+  if (rowNum === columnNum) {
     status.lower = detectLine(bingoSheet.map((row, i) => row[i]));
   }
 
-  if (i === bingoSheet.length - j - 1) {
+  if (rowNum === bingoSheet.length - columnNum - 1) {
     status.upper = detectLine(
       bingoSheet.map((row, i) => row[row.length - i - 1]),
     );

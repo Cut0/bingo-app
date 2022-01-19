@@ -54,7 +54,7 @@ describe(detectLine.name, () => {
 
 describe(getLineStatus.name, () => {
   const { row, column, upper, lower } = getLineStatus(
-    { i: 2, j: 2 },
+    { rowNum: 2, columnNum: 2 },
     bingoSheet,
   );
 

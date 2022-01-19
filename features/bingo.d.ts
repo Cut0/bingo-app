@@ -1,3 +1,5 @@
+export type BingoElementPosition = { rowNum: number; columnNum: number };
+
 export type BingoElementInfo = { num: number; isOpened: boolean };
 
 export type BingoLine = BingoElementInfo[];
