@@ -35,13 +35,13 @@ export const getLineStatus = (
   );
 
   if (i === j) {
-    status.upper = detectLine(
-      bingoSheet.map((row, i) => row[row.length - i - 1]),
-    );
+    status.lower = detectLine(bingoSheet.map((row, i) => row[i]));
   }
 
   if (i === bingoSheet.length - j - 1) {
-    status.lower = detectLine(bingoSheet.map((row, i) => row[i]));
+    status.upper = detectLine(
+      bingoSheet.map((row, i) => row[row.length - i - 1]),
+    );
   }
 
   return status;
