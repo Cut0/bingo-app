@@ -18,34 +18,34 @@ export const detectLine = (line: BingoLine) => {
 };
 
 export const getLineStatus = (
-  { rowNum, columnNum }: BingoElementPosition,
+  { columnNum, rowNum }: BingoElementPosition,
   bingoSheet: BingoSheet,
 ) => {
   const status: {
-    row: LineStatus;
     column: LineStatus;
+    row: LineStatus;
     upper?: LineStatus;
     lower?: LineStatus;
   } = {
-    row: 'Initial',
     column: 'Initial',
+    row: 'Initial',
     upper: undefined,
     lower: undefined,
   };
 
-  status.row = detectLine(bingoSheet[rowNum]);
+  status.column = detectLine(bingoSheet[columnNum]);
 
-  status.column = detectLine(
-    bingoSheet[0]?.map((_, i) => bingoSheet.map((row) => row[i]))[columnNum],
+  status.row = detectLine(
+    bingoSheet[0]?.map((_, i) => bingoSheet.map((column) => column[i]))[rowNum],
   );
 
   if (rowNum === columnNum) {
-    status.lower = detectLine(bingoSheet.map((row, i) => row[i]));
+    status.lower = detectLine(bingoSheet.map((column, i) => column[i]));
   }
 
-  if (rowNum === bingoSheet.length - columnNum - 1) {
+  if (columnNum === bingoSheet.length - rowNum - 1) {
     status.upper = detectLine(
-      bingoSheet.map((row, i) => row[row.length - i - 1]),
+      bingoSheet.map((column, i) => column[column.length - i - 1]),
     );
   }
 

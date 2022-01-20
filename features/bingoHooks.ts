@@ -9,8 +9,8 @@ export const useBingo = (length: number) => {
   );
 
   const [bingoLineState, setBingoLineState] = useState<BingoLineState>({
-    row: Array.from({ length }).map(() => 'Initial'),
     column: Array.from({ length }).map(() => 'Initial'),
+    row: Array.from({ length }).map(() => 'Initial'),
     upper: 'Initial',
     lower: 'Initial',
   });
@@ -20,17 +20,17 @@ export const useBingo = (length: number) => {
       if (!bingoSheet) return;
 
       const newBingoSheet = [...bingoSheet];
-      newBingoSheet[position.rowNum][position.columnNum].isOpened = true;
+      newBingoSheet[position.columnNum][position.rowNum].isOpened = true;
       setBingoSheet(newBingoSheet);
 
       setBingoLineState((preState) => {
-        const { row, column, upper, lower } = getLineStatus(
+        const { column, row, upper, lower } = getLineStatus(
           position,
           newBingoSheet,
         );
         const newState = { ...preState };
-        newState.row[position.rowNum] = row;
         newState.column[position.columnNum] = column;
+        newState.row[position.rowNum] = row;
         if (lower) {
           newState.lower = lower;
         }

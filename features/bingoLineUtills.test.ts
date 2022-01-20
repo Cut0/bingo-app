@@ -53,17 +53,17 @@ describe(detectLine.name, () => {
 });
 
 describe(getLineStatus.name, () => {
-  const { row, column, upper, lower } = getLineStatus(
-    { rowNum: 2, columnNum: 2 },
+  const { column, row, upper, lower } = getLineStatus(
+    { columnNum: 2, rowNum: 2 },
     bingoSheet,
   );
 
   test('列の配列が正常になる。', () => {
-    expect(row).toBe('Bingo');
+    expect(column).toBe('Bingo');
   });
 
   test('行の配列が正常になる。', () => {
-    expect(column).toBe('Initial');
+    expect(row).toBe('Initial');
   });
 
   test('➚の配列が正常になる。', () => {

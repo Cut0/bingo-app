@@ -1,4 +1,4 @@
-export const getBingoNumberRow = ({
+export const getBingoNumberColumn = ({
   min,
   max,
   length,
@@ -22,13 +22,13 @@ export const getBingoNumberRow = ({
 
 export const getBingoNumber = (length: number) => {
   return Array.from({ length }).map((_, i) =>
-    getBingoNumberRow({ min: i * 15 + 1, max: (i + 1) * 15, length }),
+    getBingoNumberColumn({ min: i * 15 + 1, max: (i + 1) * 15, length }),
   );
 };
 
 export const getInitialBingo = (length: number) => {
-  return getBingoNumber(length).map((row, i) => {
-    return row.map((el, j) => {
+  return getBingoNumber(length).map((column, i) => {
+    return column.map((el, j) => {
       if (i === Math.floor(length / 2) && j === Math.floor(length / 2)) {
         return { num: el, isOpened: true };
       }

@@ -1,4 +1,4 @@
-export type BingoElementPosition = { rowNum: number; columnNum: number };
+export type BingoElementPosition = { columnNum: number; rowNum: number };
 
 export type BingoElementInfo = { num: number; isOpened: boolean };
 
