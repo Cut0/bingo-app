@@ -47,7 +47,6 @@ describe(useBingo.name, () => {
         result.current[2]({ columnNum: 4, rowNum: 4 }),
       ]);
     });
-    console.log(result.current[0]);
     expect(result.current[0]?.flat().map((el) => el.isOpened)).toEqual([
       true,
       true,

@@ -21,7 +21,6 @@ export const useBingo = (length: number) => {
 
       const newBingoSheet = [...bingoSheet];
       newBingoSheet[position.columnNum][position.rowNum].isOpened = true;
-      console.log(newBingoSheet);
       setBingoSheet(newBingoSheet);
 
       setBingoLineState((preState) => {
