@@ -4,14 +4,14 @@ import { useBingo } from '../features/bingoHooks';
 import { BINGO_SIZE } from '../features/config';
 import { BingoElement } from './BingoElement';
 
-type BingoRowProps = {
-  rowNameList: string[];
+type BingoColumnProps = {
+  columnNameList: string[];
 };
 
-const BingoRowComponent: FC<BingoRowProps> = ({ rowNameList }) => {
+const BingoColumnComponent: FC<BingoColumnProps> = ({ columnNameList }) => {
   return (
     <Grid gap={2} pt={2} px={4} templateColumns="repeat(5,1fr)">
-      {rowNameList.map((el, i) => {
+      {columnNameList.map((el, i) => {
         return (
           <Text
             color="primary"
@@ -27,14 +27,14 @@ const BingoRowComponent: FC<BingoRowProps> = ({ rowNameList }) => {
   );
 };
 
-const BingoRow = memo(BingoRowComponent);
+const BingoColumn = memo(BingoColumnComponent);
 
 export const BingoSheet: FC<{}> = () => {
   const [bingoSheet, bingoLineState, openBingo] = useBingo(BINGO_SIZE);
-  const rowNameList = useMemo(() => ['B', 'I', 'N', 'G', 'O'], []);
+  const columnNameList = useMemo(() => ['B', 'I', 'N', 'G', 'O'], []);
   return (
     <>
-      <BingoRow rowNameList={rowNameList} />
+      <BingoColumn columnNameList={columnNameList} />
       <Grid
         gap={2}
         gridAutoFlow="column"
@@ -43,15 +43,15 @@ export const BingoSheet: FC<{}> = () => {
         templateColumns="repeat(5,1fr)"
         templateRows="repeat(5,1fr)"
       >
-        {bingoSheet?.map((row, i) => {
-          return row.map((el, j) => {
+        {bingoSheet?.map((column, i) => {
+          return column.map((el, j) => {
             return (
               <BingoElement
                 bingoLineState={bingoLineState}
                 elementInfo={el}
                 key={String(i) + String(j)}
                 open={openBingo}
-                position={{ rowNum: i, columnNum: j }}
+                position={{ columnNum: i, rowNum: j }}
               />
             );
           });

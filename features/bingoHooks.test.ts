@@ -17,8 +17,8 @@ describe(useBingo.name, () => {
 
   test('Line判定用のStateが初期状態である。', () => {
     expect(result.current[1]).toEqual({
-      row: ['Initial', 'Initial', 'Initial', 'Initial', 'Initial'],
       column: ['Initial', 'Initial', 'Initial', 'Initial', 'Initial'],
+      row: ['Initial', 'Initial', 'Initial', 'Initial', 'Initial'],
       upper: 'Initial',
       lower: 'Initial',
     });
@@ -27,26 +27,27 @@ describe(useBingo.name, () => {
   test('ビンゴを空けられる。', async () => {
     await act(async () => {
       Promise.all([
-        result.current[2]({ rowNum: 0, columnNum: 0 }),
-        result.current[2]({ rowNum: 0, columnNum: 1 }),
-        result.current[2]({ rowNum: 0, columnNum: 2 }),
-        result.current[2]({ rowNum: 1, columnNum: 0 }),
-        result.current[2]({ rowNum: 1, columnNum: 1 }),
-        result.current[2]({ rowNum: 1, columnNum: 2 }),
-        result.current[2]({ rowNum: 1, columnNum: 3 }),
-        result.current[2]({ rowNum: 2, columnNum: 0 }),
-        result.current[2]({ rowNum: 2, columnNum: 1 }),
-        result.current[2]({ rowNum: 2, columnNum: 3 }),
-        result.current[2]({ rowNum: 2, columnNum: 4 }),
-        result.current[2]({ rowNum: 3, columnNum: 0 }),
-        result.current[2]({ rowNum: 3, columnNum: 1 }),
-        result.current[2]({ rowNum: 3, columnNum: 3 }),
-        result.current[2]({ rowNum: 4, columnNum: 0 }),
-        result.current[2]({ rowNum: 4, columnNum: 1 }),
-        result.current[2]({ rowNum: 4, columnNum: 3 }),
-        result.current[2]({ rowNum: 4, columnNum: 4 }),
+        result.current[2]({ columnNum: 0, rowNum: 0 }),
+        result.current[2]({ columnNum: 0, rowNum: 1 }),
+        result.current[2]({ columnNum: 0, rowNum: 2 }),
+        result.current[2]({ columnNum: 1, rowNum: 0 }),
+        result.current[2]({ columnNum: 1, rowNum: 1 }),
+        result.current[2]({ columnNum: 1, rowNum: 2 }),
+        result.current[2]({ columnNum: 1, rowNum: 3 }),
+        result.current[2]({ columnNum: 2, rowNum: 0 }),
+        result.current[2]({ columnNum: 2, rowNum: 1 }),
+        result.current[2]({ columnNum: 2, rowNum: 3 }),
+        result.current[2]({ columnNum: 2, rowNum: 4 }),
+        result.current[2]({ columnNum: 3, rowNum: 0 }),
+        result.current[2]({ columnNum: 3, rowNum: 1 }),
+        result.current[2]({ columnNum: 3, rowNum: 3 }),
+        result.current[2]({ columnNum: 4, rowNum: 0 }),
+        result.current[2]({ columnNum: 4, rowNum: 1 }),
+        result.current[2]({ columnNum: 4, rowNum: 3 }),
+        result.current[2]({ columnNum: 4, rowNum: 4 }),
       ]);
     });
+    console.log(result.current[0]);
     expect(result.current[0]?.flat().map((el) => el.isOpened)).toEqual([
       true,
       true,
@@ -76,8 +77,8 @@ describe(useBingo.name, () => {
     ]);
 
     expect(result.current[1]).toEqual({
-      row: ['Initial', 'Reach', 'Bingo', 'Initial', 'Reach'],
-      column: ['Bingo', 'Bingo', 'Initial', 'Reach', 'Initial'],
+      column: ['Initial', 'Reach', 'Bingo', 'Initial', 'Reach'],
+      row: ['Bingo', 'Bingo', 'Initial', 'Reach', 'Initial'],
       upper: 'Reach',
       lower: 'Bingo',
     });
